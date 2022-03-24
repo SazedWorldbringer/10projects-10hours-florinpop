@@ -3,7 +3,7 @@ const daysEl = document.getElementById('days')
 const hoursEl = document.getElementById('hours')
 const minutesEl = document.getElementById('minutes')
 
-const newYear = '1 Jan 2023'
+const newYear = '07:03:00 10 May 2022'
 
 function formatTime(time) {
     return time < 10 ? `0${time}` : time
