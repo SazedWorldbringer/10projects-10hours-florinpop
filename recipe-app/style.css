@@ -2,8 +2,6 @@
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
@@ -41,7 +39,7 @@ a {
 
 @media screen and (max-width: 767px) {
   .container {
-    height: 100vh;
+    height: 90vh;
   }
 }
 
@@ -96,6 +94,25 @@ header button {
 .fav-meals li {
   display: grid;
   grid-template-rows: min-content;
+  position: relative;
+  cursor: pointer;
+}
+
+.fav-meals li .clear {
+  background-color: transparent;
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: 300ms;
+}
+
+.fav-meals li:hover .clear {
+  opacity: 1;
 }
 
 .fav-meals li img {
@@ -109,13 +126,30 @@ header button {
 
 .fav-meals li span {
   font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+.fav-meals li:hover span {
+  overflow: visible;
+  white-space: normal;
+}
+
+.meals {
+  overflow-y: auto;
 }
 
 .meal {
   border-radius: 0.5rem;
   box-shadow: 0 4px 10px hsla(0, 0%, 20%, 0.3);
   margin: 1.5rem;
-  overflow: hidden;
+  overflow-y: auto;
+}
+
+.meal img {
+  cursor: pointer;
 }
 
 .meal-header {
@@ -160,3 +194,47 @@ header button {
   color: red;
 }
 
+.popup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-container.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.popup {
+  background-color: #fff;
+  max-height: 90vh;
+  max-width: 600px;
+  width: 100%;
+  padding: 0 2rem;
+  border-radius: 0.5rem;
+  position: relative;
+  overflow-y: auto;
+}
+
+.popup h1 {
+  text-align: center;
+}
+
+.popup .close-popup {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: transparent;
+  margin: none;
+  border: none;
+  transition: 300ms all;
+}
